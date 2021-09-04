@@ -1,0 +1,16 @@
+<h1>Topページ</h1>
+<% @memo_files_array.each do |file| %>
+  <div>
+  <li><a href='/<%=file[:memo_id]%>'><%= h("#{file[:title]}") %></a></li>
+  </div>
+
+<% end %>
+
+
+
+<a href="/new">新規作成</a>
+
+<%# <form action="/create" method="post">
+  <input type="text" name="body">
+  <input type="submit" value="Add comment">
+</form> %>
