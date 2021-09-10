@@ -10,8 +10,6 @@ enable :method_override
 get '/' do
   memo_files = Dir.glob("./db/*")
   @memo_files_array = memo_files.map {|files| JSON.parse(File.open(files).read, symbolize_names: true)}
-  p "memo_files_arrayを出力"
-  p @memo_files_array
   erb :index
 end
 
