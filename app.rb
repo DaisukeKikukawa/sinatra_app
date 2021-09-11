@@ -7,18 +7,18 @@ require 'yaml/store'
 require 'securerandom'
 enable :method_override
 
-get '/' do
+get '/memos' do
   memo_files = Dir.glob("./db/*")
   @memo_files_array = memo_files.map {|files| JSON.parse(File.open(files).read, symbolize_names: true)}
   erb :index
 end
 
-get '/new' do
+get '/memos/new' do
   erb :new
 end
 
-get '/:id' do |n|
-  @edit = "/#{params['id']}/edit"
+get '/memos/:id' do |n|
+  @edit = "/memos/#{params['id']}/edit"
   memo_file = Dir.glob("./db/#{params['id']}.json")
   @memo_file_array = memo_file.map {|files| JSON.parse(File.open(files).read, symbolize_names: true)}
 
@@ -30,19 +30,19 @@ get '/:id' do |n|
   erb :show
 end
 
-delete '/:id' do
+delete '/memos/:id' do
   File.delete("./db/#{params['id']}.json")
-  redirect "/"
+  redirect "/memos"
 end
 
-get '/:id/edit' do
-  @id = "/#{params['id']}"
+get '/memos/:id/edit' do
+  @id = "/memos/#{params['id']}"
   memo_file = Dir.glob("./db/#{params['id']}.json")
   @memo_file_array = memo_file.map {|files| JSON.parse(File.open(files).read, symbolize_names: true)}
   erb :edit
 end
 
-post '/' do
+post '/memos' do
   @title = h(params[:title])
   @content = h(params[:content])
   memo_id = SecureRandom.alphanumeric
@@ -56,12 +56,12 @@ post '/' do
   erb :index
 end
 
-patch '/:id' do
+patch '/memos/:id' do
   File.open("./db/#{params['id']}.json",'w') do |file|
     hash = {id: "#{params['id']}",title: params[:title],body: params[:body]}
     JSON.dump(hash,file)
   end
-  redirect to("/")
+  redirect to("/memos")
 end
 
 helpers do
