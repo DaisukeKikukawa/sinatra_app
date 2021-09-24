@@ -1,10 +1,8 @@
 <h1>編集画面</h1>
-<% @memo_file_array.each do |file| %>
       <form method="post" action="<%= @id %>">
         <input type="hidden" name="_method" value="patch">
-        <p><input type="text" name="title" value="<%= "#{file[:title]}" %>"</p>
-        <p><textarea name="content" cols="30" rows="5"><%= "#{file[:content]}" %></textarea></p>
+        <p><input type="text" name="title" value="<%= @title %>"</p>
+        <p><textarea name="content" cols="30" rows="5"><%= @content %></textarea></p>
         <p><button type="submit">変更</button></p>
       </form>
-    <% end %>
 <a href="/memos">ホームへ</a>
