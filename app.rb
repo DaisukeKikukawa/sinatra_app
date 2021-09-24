@@ -19,9 +19,6 @@ end
 
 get '/memos/:id' do |n|
   @edit = "/memos/#{params['id']}/edit"
-  memo_file = Dir.glob("./db/#{params['id']}.json")
-  @memo_file_array = memo_file.map {|files| JSON.parse(File.open(files).read, symbolize_names: true)}
-
   file = File.open("./db/#{n}.json", "r")
   memo = JSON.load(file)
   @title = memo["title"]
@@ -35,10 +32,12 @@ delete '/memos/:id' do
   redirect "/memos"
 end
 
-get '/memos/:id/edit' do
+get '/memos/:id/edit' do |n|
   @id = "/memos/#{params['id']}"
-  memo_file = Dir.glob("./db/#{params['id']}.json")
-  @memo_file_array = memo_file.map {|files| JSON.parse(File.open(files).read, symbolize_names: true)}
+  file = File.open("./db/#{n}.json", "r")
+  memo = JSON.load(file)
+  @title = memo["title"]
+  @content = memo["content"]
   erb :edit
 end
 
