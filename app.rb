@@ -42,8 +42,8 @@ get '/memos/:id/edit' do |n|
 end
 
 post '/memos' do
-  @title = h(params[:title])
-  @content = h(params[:content])
+  @title = params[:title]
+  @content = params[:content]
   memo_id = SecureRandom.alphanumeric
   memos = {"memo_id"=>"#{memo_id}","title"=>@title, "content"=>@content}
   File.open("./db/#{memo_id}.json", 'w') do |file|
