@@ -1,0 +1,18 @@
+<h1>これは詳細画面です</h1>
+
+<div>
+    <div>
+      タイトル: <%=h(@title)%>
+    </div>
+    <div>
+      本文:<%=h(@content)%>
+    </div>
+</div>
+
+<form method="post" action="  ">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="削除">
+</form>
+
+<a href="/memos">トップへ戻る</a>
+<a href=" <%= @edit %>">編集</a>

@@ -1,0 +1,17 @@
+<h1>投稿画面</h1>
+
+<form action="/memos" method="post">
+  <dl>
+    <dt><label for="title">タイトル</label></dt>
+    <dd>
+      <input type="text" name="title" id="title">
+    </dd>
+    <dt><label for="content">内容</dt>
+    <dd>
+      <textarea name="content" id="content" cols="40" rows="10"></textarea>
+    </dd>
+  </dl>
+  <button type='submit' class='btn btn-primary'>作成</button>
+</form>
+
+<a href="/memos">ホームへ</a>
