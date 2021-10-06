@@ -6,6 +6,24 @@ sinatraを使ったmemoアプリになります。CRUD処理を実装してお�
 
 ②コマンドライン上でこのフォルダの階層に移動します。
 
-③$ bundle exec ruby app.rbを実行します。
+③ローカルでDB用のテーブルを作成します。
+PostgreSQLで自分のアカウントにログインします
+```
+$ psql -U アカウント名
+```
+`memos`というデータベースを作成します
+```
+アカウント名=# CREATE DATABASE memos;
 
-④http://localhost:4567　にアクセスします。
+テーブルを作成します
+```
+CREATE TABLE memos_app
+(id  serial NOT NULL,
+title text NOT NULL,
+content text NOT NULL,
+PRIMARY KEY (id));
+```
+
+④$ bundle exec ruby app.rbを実行します。
+
+⑤http://localhost:4567にアクセスします。
