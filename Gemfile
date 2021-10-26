@@ -11,4 +11,6 @@ gem 'webrick'
 
 gem 'redcarpet'
 
+gem 'pg'
+
 # gem "rails"
