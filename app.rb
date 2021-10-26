@@ -45,15 +45,6 @@ get '/memos/:id/edit' do |n|
   erb :edit
 end
 
-post '/memos' do
-  @id = SecureRandom.uuid
-  @title = params[:title]
-  @content = params[:content]
-  conn.exec("INSERT INTO memos_app (title, content) VALUES ( '#{params['title']}', '#{params['content']}');")
-
-  erb :index
-end
-
 patch '/memos/:id' do
   conn.exec('UPDATE memos_app SET title = $1, content = $2 WHERE id = $3;', [params['title'], params['content'], params['id']])
   redirect to("/memos")
