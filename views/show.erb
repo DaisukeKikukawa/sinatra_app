@@ -2,10 +2,10 @@
 
 <div>
     <div>
-      タイトル：<%= @memos[0]['title'] %>
+      タイトル：<%= h(@memos[0]['title']) %>
     </div>
     <div>
-      本文：<%= @memos[0]['content'] %>
+      本文：<%= h(@memos[0]['content']) %>
     </div>
     </ul>
 </div>
