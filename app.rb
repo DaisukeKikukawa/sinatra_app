@@ -9,7 +9,7 @@ require 'pg'
 enable :method_override
 
 def conn
-  PG.connect(dbname: 'memos')
+  @conn || = PG.connect(dbname: 'memos')
 end
 
 get '/memos' do
