@@ -1,8 +1,8 @@
 <h1>編集画面</h1>
       <form method="post" action="<%= @id %>">
         <input type="hidden" name="_method" value="patch">
-        <p><input type="text" name="title" value="<%= @title %>"</p>
-        <p><textarea name="content" cols="30" rows="5"><%= @content %></textarea></p>
+        <p><input type="text" name="title" value="<%= h(@memos[0]["title"]) %>"</p>
+        <p><textarea name="content" cols="30" rows="5"><%= h(@memos[0]["content"]) %></textarea></p>
         <p><button type="submit">変更</button></p>
       </form>
 <a href="/memos">ホームへ</a>

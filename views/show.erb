@@ -1,18 +1,17 @@
-<h1>これは詳細画面です</h1>
+<h1 class="title">詳細画面</h1>
 
 <div>
     <div>
-      タイトル: <%=h(@title)%>
+      タイトル：<%= h(@memos[0]['title']) %>
     </div>
     <div>
-      本文:<%=h(@content)%>
+      本文：<%= h(@memos[0]['content']) %>
     </div>
+    </ul>
 </div>
-
 <form method="post" action="  ">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="削除">
 </form>
-
 <a href="/memos">トップへ戻る</a>
 <a href=" <%= @edit %>">編集</a>
